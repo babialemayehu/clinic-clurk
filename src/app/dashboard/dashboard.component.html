@@ -1,0 +1,26 @@
+<section>
+ <div class="row">
+   <div class="col m4 l3 s12">
+     <mat-card id="queue">
+       <app-queue-min></app-queue-min>
+      </mat-card>
+   </div>
+   <div class="col m8 l9 s12">
+     <div class="center patinet-search" [class.no-search]="noSearch">
+       <h3 *ngIf="noSearch">Patient search</h3>
+       <div class="container search">
+         <app-patient-search (result)="onSearch()"></app-patient-search>
+        </div>
+     </div>
+     <div>
+        <mat-card *ngIf="!noSearch">
+          <app-patinet-view [patient]="patinet"></app-patinet-view>
+          <br>
+          <button mat-button (click)="queue()" class="right primary" style="color:white">Queue</button>
+          <button mat-button (click)="dequeue()" class="right danger-text">Dequeue</button>
+        </mat-card>
+     </div>
+     
+   </div>
+ </div>
+</section>

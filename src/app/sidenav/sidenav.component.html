@@ -1,0 +1,32 @@
+<!-- <ul id="slide-out" class="sidenav">
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <img src="http://clinic.com/img/avatar.jpg">
+      </div> -->
+    <!-- <a href="#user"><img class="circle" src="http://clinic.com/img/Alan.png"></a> -->
+    <!-- <a href="#"><span class="white-text name">{{($auth)?.first_name + " " + ($auth)?.father_name}}</span></a>
+    <a href="#"><span class="white-text email">{{ ($auth)?.worker_id }}</span></a>
+  </div></li>
+  <li><a href="#"><i class="material-icons">mail_outline</i>{{ ($auth)?.email }}</a></li>
+  <li><a href="#"><i class="material-icons">phone</i>{{ ($auth)?.phone }}</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Subheader</a></li>
+  <li><a class="waves-effect" href="#">Third Link With Waves</a></li>
+</ul> -->
+<ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <img [src]="profilePic">
+      </div>
+      <a href="#user"><img class="circle" [src]="profilePic"></a>
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#"><i class="material-icons">mail_outline</i>{{ ($auth)?.email }}</a></li>
+    <li><a href="#"><i class="material-icons">phone</i>{{ ($auth)?.phone }}</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader"></a></li>
+    <li><a class="waves-effect" nav-link="/settings"><i class="material-icons">settings</i>Setings</a></li>
+    <li><a class="waves-effect" href="#"><i class="material-icons">launch</i>Log out</a></li>
+  </ul>

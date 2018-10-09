@@ -1,0 +1,25 @@
+<nav class="primary" >
+  <div class="container">
+      <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Logo</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li *ngFor="let item of menuItems"><a [href]="item.href">{{item.text}}</a></li>
+          </ul>
+      </div>
+  </div>
+  <div>
+    <span href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></span>
+  </div>
+  <div class="container ">
+    <span class='dropdown-trigger right hide-on-large-only ' href='#' data-target='menuDropdown'><i class="material-icons">more_vert</i></span>
+  </div>
+
+  <!-- Dropdown Structure -->
+  <ul id='menuDropdown' class='dropdown-content'>
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">JavaScript</a></li>
+  </ul>
+</nav>
+
+

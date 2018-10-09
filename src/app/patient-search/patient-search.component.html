@@ -1,0 +1,9 @@
+<div>
+  <mat-card>
+    <input type="search" id="search" placeholder="Search patient" [matAutocomplete]="auto">
+    <mat-icon (click)="search()">search</mat-icon>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let patient of autocomplets" [value]="option">{{option}}</mat-option>
+    </mat-autocomplete>
+  </mat-card>
+</div>
