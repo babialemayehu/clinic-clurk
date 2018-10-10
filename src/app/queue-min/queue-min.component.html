@@ -1,8 +1,11 @@
 <div class="titel"><app-card-title titel="Patients queue"></app-card-title></div>
 <mat-list>
-  <mat-list-item><span id="id">TER_0075_09</span><i class="right small secondery">4min ago</i></mat-list-item> 
-  <mat-list-item><span id="id">TER_0075_09</span><i class="right small secondery">4min ago</i></mat-list-item> 
-  <mat-list-item><span id="id">TER_0075_09</span><i class="right small secondery">4min ago</i></mat-list-item> 
-  <mat-list-item><span id="id">TER_0075_09</span><i class="right small secondery">4min ago</i></mat-list-item> 
-  <mat-list-item><span id="id">TER_0075_09</span><i class="right small secondery">4min ago</i></mat-list-item> 
+
+  <mat-list-item *ngFor="let queue of queues">
+    <span id="id"><pre>{{(queue)?.patient.reg_id}}</pre></span>
+    <i class="right small secondery">{{(queue)?.humanWaitingTime}}</i>
+  </mat-list-item> 
 </mat-list>
+<div class="center container" *ngIf="queues == []">
+  <strong class="secondery">No patient in a queue</strong>
+</div>

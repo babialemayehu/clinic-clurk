@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Patient } from '../model/Patient'; 
 
 @Component({
   selector: 'app-patinet-view',
@@ -7,8 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PatinetViewComponent implements OnInit {
 
-  @Input() patient; 
-  
+  @Input() patient: Patient;
+
   constructor() { }
 
   ngOnInit() {

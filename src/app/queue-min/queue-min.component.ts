@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Patient_queue } from '../model/Patient_queue'; 
+import { PatientQueueService } from '../service/patient-queue.service'; 
 
 @Component({
   selector: 'app-queue-min',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QueueMinComponent implements OnInit {
 
-  constructor() { }
+  private queues: Patient_queue[] = []; 
+
+  constructor(private _queue: PatientQueueService) { }
 
   ngOnInit() {
+    this.load(); 
+    setInterval(() => {
+      this.load()
+    }, 10000); 
   }
-
+  
+  load(){
+    this._queue.queue_list(7).subscribe(
+      (responce) => {
+        this.queues = responce; 
+      }
+    )
+  }
 }

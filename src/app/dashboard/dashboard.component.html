@@ -9,12 +9,12 @@
      <div class="center patinet-search" [class.no-search]="noSearch">
        <h3 *ngIf="noSearch">Patient search</h3>
        <div class="container search">
-         <app-patient-search (result)="onSearch()"></app-patient-search>
+         <app-patient-search (patient)="onSearch($event)"></app-patient-search>
         </div>
      </div>
      <div>
         <mat-card *ngIf="!noSearch">
-          <app-patinet-view [patient]="patinet"></app-patinet-view>
+          <app-patinet-view [patient]="patient"></app-patinet-view>
           <br>
           <button mat-button (click)="queue()" class="right primary" style="color:white">Queue</button>
           <button mat-button (click)="dequeue()" class="right danger-text">Dequeue</button>

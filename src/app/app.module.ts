@@ -37,6 +37,9 @@ import {
   MatSortModule, 
   MatDialogModule,  
   MatSelectModule, 
+  MatAutocompleteModule, 
+  MatDatepickerModule,
+  MatNativeDateModule,
 
 } from '@angular/material';
 import { UsersComponent } from './users/users.component';
@@ -85,7 +88,8 @@ import { QueueMinComponent } from './queue-min/queue-min.component';
     PatinetViewComponent,
     RecentVisitsComponent,
     CardTitleComponent,
-    QueueMinComponent
+    QueueMinComponent,
+   
     // ContextMenu,
   ],
   imports: [
@@ -110,8 +114,10 @@ import { QueueMinComponent } from './queue-min/queue-min.component';
     MatSortModule, 
     MatDialogModule, 
     MatSelectModule,
+    MatAutocompleteModule,
     ContextMenuModule,
-   
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   entryComponents: [
     RegisterationFormComponent, 

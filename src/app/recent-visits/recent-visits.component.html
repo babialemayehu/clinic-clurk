@@ -1,7 +1,8 @@
 <app-card-title id="title" titel="Recent visits"></app-card-title>
+{{ visits | json }}
 <mat-list style="width: 100%">
-  <mat-list-item>By <strong> abebe</strong><i class="secondery right">4min ago</i></mat-list-item>
-  <mat-list-item>By <strong> abebe</strong><i class="secondery right">4min ago</i></mat-list-item>
-  <mat-list-item>By <strong> abebe</strong><i class="secondery right">4min ago</i></mat-list-item>
-  <mat-list-item>By <strong> abebe</strong><i class="secondery right">4min ago</i></mat-list-item>
+  <mat-list-item *ngFor="let visit of visits">
+    By <strong> abebe</strong>
+    <i class="secondery right">4min ago</i>
+  </mat-list-item>
 </mat-list>

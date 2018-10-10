@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder , Validators} from '@angular/forms';
 import { Router } from '@angular/router'; 
 
 import { RoleService } from '../service/role.service'; 
-import { UserService } from '../service/user.service'; 
+import { PatientService } from '../service/patient.service'; 
 import { CommonMessageService as Message }  from '../service/common-message.service'; 
 
 import { User } from '../model/User'; 
@@ -14,7 +14,7 @@ declare var M;
   selector: 'app-registeration-form',
   templateUrl: './registeration-form.component.html',
   styleUrls: ['./registeration-form.component.scss'],
-  providers: [RoleService,UserService], 
+  providers: [RoleService,PatientService], 
 })
 export class RegisterationFormComponent implements OnInit {
 
@@ -32,26 +32,34 @@ export class RegisterationFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:any, 
     public formBuilder: FormBuilder, 
     public _route: Router, 
-    public _user: UserService, 
+    public _patient: PatientService, 
     public _message: Message
   ) { }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group({
       id:[''],
-      worker_id: ['', [Validators.required]], 
+      reg_id: ['', [Validators.required]], 
+      department: ['', [Validators.required]], 
+      accadamic_year: ['', [Validators.required]], 
       first_name: ['', [Validators.required]], 
       father_name: ['', [ Validators.required]], 
       grand_father_name: ['', [Validators.required]], 
       gender: ['', [Validators.required]],
-      role_id: ['', [Validators.required]],
-      email: ['', [Validators.required,Validators.email]],
+      dorm_block: ['', [Validators.required]], 
+      dorm_room_number: ['', [Validators.required]], 
+      birth_date: ['', [Validators.required]],
       phone: ['', [Validators.required]],
     }); 
+
     if(typeof this.data.user !== 'undefined'){
       this.regForm.patchValue(this.data.user);
       this.regOprationMode = 'update'; 
     } 
+
+    // this.regForm.valueChanges.subscribe(
+    //   (value) => { console.log(value); }
+    // ); 
   }
   onSubmit(){
     this.loading = true; 
@@ -63,10 +71,9 @@ export class RegisterationFormComponent implements OnInit {
      
   }
   _new(){
-    this._user.postCreateUser(this.regForm.value).subscribe(
+    this._patient.create(this.regForm.value).subscribe(
       responce => {
-        // window.location.href="/user"; 
-        this._route.navigate(['/'+responce.worker_id]);
+        // this._route.navigate(['/'+responce.reg_id]);
         this.thisDialog.close({responce:true,opration:'create', data: responce});
         this._message.httpSuccess('created account for <b> '+responce.first_name);
       }, 
@@ -77,9 +84,8 @@ export class RegisterationFormComponent implements OnInit {
     ) 
   }
   update(){
-    this._user.updateUser(this.regForm.value).subscribe(
+    this._patient.update(this.regForm.value.id, this.regForm.value).subscribe(
       responce => {
-        //window.location.href="/user"; 
         this.thisDialog.close({responce:true,opration:'update', data: responce});
         this._message.httpSuccess('created account for <b> '+responce.first_name);
       }, 
@@ -89,12 +95,15 @@ export class RegisterationFormComponent implements OnInit {
       }
     )  
   }
-  get worker_id(){return this.regForm.get("worker_id"); }
+  get reg_id(){return this.regForm.get("reg_id"); }
+  get department(){return this.regForm.get("department"); }
+  get accadamic_year(){return this.regForm.get("accadamic_year"); }
   get first_name(){return this.regForm.get("first_name"); }
   get father_name(){return this.regForm.get("father_name"); }
   get grand_father_name(){return this.regForm.get("grand_father_name"); }
   get gender(){return this.regForm.get("gender"); }
-  get role_id(){return this.regForm.get("role_id"); }
-  get email(){return this.regForm.get("email"); }
+  get dorm_room_number(){return this.regForm.get("dorm_room_number"); }
+  get dorm_block(){return this.regForm.get("dorm_block"); }
+  get birth_date(){return this.regForm.get("birth_date"); }
   get phone(){return this.regForm.get("phone"); }
 }

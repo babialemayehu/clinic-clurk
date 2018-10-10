@@ -9,9 +9,23 @@
     
   <form id="registartionForm" class="container" (ngSubmit)="onSubmit()" [formGroup]='regForm' > 
     <div class="row">
-      <mat-form-field class="col m12">
-        <input matInput formControlName="worker_id" placeholder="worker_id" class="browser-default"> 
-        <mat-error *ngIf="worker_id.invalid && worker_id.touched">
+      <mat-form-field class="col m4">
+        <input matInput formControlName="reg_id" placeholder="Registral id" class="browser-default"> 
+        <mat-error *ngIf="reg_id.invalid && reg_id.touched">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col m5">
+        <input matInput formControlName="department" placeholder="Department" class="browser-default"> 
+        <mat-error *ngIf="department.invalid && department.touched">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col m3">
+        <input matInput formControlName="accadamic_year" placeholder="Batch" class="browser-default"> 
+        <mat-error *ngIf="accadamic_year.invalid && accadamic_year.touched">
           This field is required
         </mat-error>
       </mat-form-field>
@@ -35,7 +49,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col m6">
+      <mat-form-field class="col m4">
         <mat-select formControlName="gender" placeholder="Gender">
           <mat-option value="Male">Male</mat-option>
           <mat-option value="Female">Female</mat-option>
@@ -45,27 +59,28 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="col m6">
-        <mat-select  formControlName="role_id" placeholder="Role">
-          <mat-option *ngFor="let _role of data.roles" [value]="_role.id">
-            {{_role.name}}
-          </mat-option>
-        </mat-select>
-       
-        <mat-error *ngIf="role_id.invlaid && role_id.touched">
+      <mat-form-field class="col m4">
+        <input matInput formControlName="dorm_block" placeholder="Dorm" class="browser-default"> 
+        <mat-error *ngIf="dorm_block.invalid && dorm_block.touched">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col m4">
+        <input matInput formControlName="dorm_room_number" placeholder="Block" class="browser-default"> 
+        <mat-error *ngIf="dorm_room_number.invalid && dorm_room_number.touched">
           This field is required
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="col m12">
-        <input matInput formControlName="email" placeholder="email"> 
-        <mat-error *ngIf="email.errors?.required && email.touched">
+        <input matInput formControlName="birth_date" placeholder="Birth date" [matDatepicker]="birthDate"> 
+        <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+        <mat-datepicker #birthDate></mat-datepicker>
+        <mat-error *ngIf="birth_date.invalid && birth_date.touched">
           This field is required
         </mat-error>
-        <mat-error *ngIf="email.errors?.email && email.touched">
-          You have provided invaild email
-        </mat-error>
-      </mat-form-field>
+      </mat-form-field> 
 
       <mat-form-field class="col m12">
         <input matInput formControlName="phone" placeholder="phone" > 
