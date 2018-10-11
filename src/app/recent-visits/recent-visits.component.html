@@ -1,8 +1,10 @@
-<app-card-title id="title" titel="Recent visits"></app-card-title>
-{{ visits | json }}
+<app-card-title id="title" titel="Recent visits" icon="launch"></app-card-title>
 <mat-list style="width: 100%">
   <mat-list-item *ngFor="let visit of visits">
     By <strong> abebe</strong>
     <i class="secondery right">4min ago</i>
   </mat-list-item>
 </mat-list>
+<div class="container center" *ngIf="visits" style="margin: 24px">
+  <h6><strong class="secondery center"><B>This is first visit</B></strong></h6>
+</div>

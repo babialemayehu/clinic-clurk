@@ -11,6 +11,11 @@ export class QueueMinComponent implements OnInit {
 
   private queues: Patient_queue[] = []; 
 
+  @Input()
+  set loadTriggr(value){
+    this.load(); 
+    console.log('load triggerd'); 
+  }
   constructor(private _queue: PatientQueueService) { }
 
   ngOnInit() {

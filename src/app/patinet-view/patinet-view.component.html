@@ -1,7 +1,7 @@
 <div class="row" style="width: 100%">
   <h5 style="display: inline">{{(patient)?.first_name}} {{(patient)?.father_name}} {{(patient)?.grand_father_name}}</h5>
-  <strong class="right">{{(patient)?.reg_id}}</strong><br>
-  <strong class="secondery">Software engineering {{(patient)?.department.name}}</strong><br>
+  <strong class="right"><span style="margin-right: 24px">{{(patient)?.reg_id}}</span> <mat-icon>more_vert</mat-icon></strong><br>
+  <strong class="secondery">{{(patient)?.department.name}} Department</strong><br>
 
     <div class="col m6 l6 s12">
       <section>
@@ -10,9 +10,7 @@
         <strong>Registerd at </strong><span>{{(patient)?.created_at}}</span><br>
       </section>
     </div>
-    <div class="col m6 l6 s12">
-      <app-recent-visits [patient]="patient"></app-recent-visits>
-    </div>
-  
-  
+    <div class="col m6 l6 s12" style="border: 1px solid #ededed; margin-top: 8px; padding: 8px">
+      <app-recent-visits [patient]="patient" icon="launch"></app-recent-visits>
+    </div> 
 </div>

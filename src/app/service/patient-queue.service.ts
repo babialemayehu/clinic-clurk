@@ -16,7 +16,7 @@ export class PatientQueueService {
 
   queue(patient_id: number): Observable<Patient_queue>{
     const URL = this.root+"/ajax/post/queue/add/"+patient_id; 
-    return this._http.put<Patient_queue>(URL, {}); 
+    return this._http.post<Patient_queue>(URL, {}); 
   }
 
   dequeue(patient_id: number): Observable<Patient>{
@@ -37,5 +37,10 @@ export class PatientQueueService {
   queue_list(limit = -1): Observable<Patient_queue[]>{
     const URL = this.root+"/ajax/get/queue/patients in queue/"+limit;
     return this._http.get<Patient_queue[]>(URL); 
+  }
+
+  isQueued(patient_id: number): Observable<number>{
+    const URL = this.root+"/ajax/get/queue/is in queue/"+patient_id; 
+    return this._http.get<number>(URL); 
   }
 }
