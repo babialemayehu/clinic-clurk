@@ -1,12 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ICON_REGISTRY_PROVIDER } from '@angular/material';
+import { Options } from '../model/Options'; 
 
 @Component({
   selector: 'app-card-title',
   templateUrl: './card-title.component.html',
   styleUrls: ['./card-title.component.scss']
 })
+
 export class CardTitleComponent implements OnInit {
 
   private _titel: string; 
@@ -14,7 +16,6 @@ export class CardTitleComponent implements OnInit {
 
   @Input() 
   set titel(val){
-    console.log(val); 
     this._titel = val; 
   }
 
@@ -23,9 +24,20 @@ export class CardTitleComponent implements OnInit {
     this._icon = val; 
   }
 
+  @Input() options: Options[]; 
+  @Output() onClick = new EventEmitter(); 
+  @Output() onSelect = new EventEmitter(); 
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  action(){
+    this.onClick.emit(); 
+  }
+
+  select(value){
+    this.onSelect.emit(value); 
+  }
 }

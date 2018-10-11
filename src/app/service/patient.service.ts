@@ -20,12 +20,12 @@ export class PatientService {
   }
 
   update(id: number, patient: Patient): Observable<Patient>{
-    const URL = this.root+"/ajax/update/patinet/"+id; 
+    const URL = this.root+"/ajax/update/patient/"+id; 
     return this._http.put<Patient>(URL, patient); 
   }
 
   delete(id: number){
-    const URL = this.root+"/ajax/delete/patinet/"+id; 
+    const URL = this.root+"/ajax/delete/patient/"+id; 
     return this._http.delete(URL); 
   }
 

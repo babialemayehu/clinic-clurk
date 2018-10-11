@@ -1,13 +1,15 @@
 <div class="row" style="width: 100%">
   <h5 style="display: inline">{{(patient)?.first_name}} {{(patient)?.father_name}} {{(patient)?.grand_father_name}}</h5>
-  <strong class="right"><span style="margin-right: 24px">{{(patient)?.reg_id}}</span> <mat-icon>more_vert</mat-icon></strong><br>
-  <strong class="secondery">{{(patient)?.department.name}} Department</strong><br>
+  <strong class="right"><span style="margin-right: 24px">{{(patient)?.reg_id}}</span> 
+    
+  </strong><br>
+  <strong class="secondery">{{((patient)?.department)?.name}} Department</strong><br>
 
     <div class="col m6 l6 s12">
       <section>
         <strong>Borned at </strong><span>{{(patient)?.birth_date}}</span><br>
-        <strong>Dorm </strong> <span>B {{(patient)?.dorm_block}} D {{dorm_room_number}}</span><br>
-        <strong>Registerd at </strong><span>{{(patient)?.created_at}}</span><br>
+        <strong>Dorm </strong> <span>B {{(patient)?.dorm_block}} D {{(patient)?.dorm_room_number}}</span><br>
+        <strong>Registerd </strong><span>{{(patient)?.registerd_at}}</span><br>
       </section>
     </div>
     <div class="col m6 l6 s12" style="border: 1px solid #ededed; margin-top: 8px; padding: 8px">

@@ -64,6 +64,7 @@ import { PatinetViewComponent } from './patinet-view/patinet-view.component';
 import { RecentVisitsComponent } from './recent-visits/recent-visits.component';
 import { CardTitleComponent } from './card-title/card-title.component';
 import { QueueMinComponent } from './queue-min/queue-min.component';
+import { QueueComponent } from './queue/queue.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { QueueMinComponent } from './queue-min/queue-min.component';
     RecentVisitsComponent,
     CardTitleComponent,
     QueueMinComponent,
+    QueueComponent,
    
     // ContextMenu,
   ],

@@ -1,4 +1,6 @@
-<div class="titel"><app-card-title titel="Patients queue" icon="launch"></app-card-title></div>
+<div class="titel">
+  <app-card-title titel="Patients queue" icon="launch" (onClick)="maximaize()"></app-card-title>
+</div>
 <mat-list>
 
   <mat-list-item *ngFor="let queue of queues">
@@ -6,6 +8,6 @@
     <i class="right small secondery">{{(queue)?.humanWaitingTime}}</i>
   </mat-list-item> 
 </mat-list>
-<div class="center container" *ngIf="queues == []">
-  <strong class="secondery">No patient in a queue</strong>
+<div class="center" *ngIf="queues.length == 0" style="margin: 24px 0px; width: 100%; opacity: 0.8">
+  <h6><strong class="secondery center"><B>This is first visit</B></strong></h6>
 </div>

@@ -17,7 +17,7 @@ export class RecentVisitsComponent implements OnInit {
     if(value){
       this._queue.recentVisit(value.id).subscribe(
         (responce) => {
-          console.log(responce); 
+           
           this.visits = responce; 
         }
       )
@@ -25,7 +25,7 @@ export class RecentVisitsComponent implements OnInit {
   }
   constructor(private _queue: PatientQueueService) { }
 
-  ngOnInit() {
+  ngOnInit() {console.log(this.visits);
   }
 
 }

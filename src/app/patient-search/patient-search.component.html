@@ -3,9 +3,9 @@
     <input type="search" id="search" placeholder="Search patient"
     [formControl]="searchControl"
     [matAutocomplete]="auto">
-    <mat-icon (click)="search()">search</mat-icon>
+    <mat-icon (click)="$search()">search</mat-icon>
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let patient of autocomplets" [value]="patient.reg_id" (click)="search(patient)">
+      <mat-option *ngFor="let patient of autocomplets" [value]="patient.reg_id" (click)="$search(patient)">
         {{patient.reg_id}}<i class="secondery right">{{patient.first_name}} {{patient.father_name}}</i>
       </mat-option>
     </mat-autocomplete>

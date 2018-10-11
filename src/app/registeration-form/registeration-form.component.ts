@@ -51,9 +51,11 @@ export class RegisterationFormComponent implements OnInit {
       birth_date: ['', [Validators.required]],
       phone: ['', [Validators.required]],
     }); 
-
-    if(typeof this.data.user !== 'undefined'){
-      this.regForm.patchValue(this.data.user);
+    console.log(typeof this.data.patient ); 
+    if(typeof this.data.patient !== 'undefined'){
+      console.log(this.data); 
+      this.regForm.patchValue(this.data.patient);
+      this.regForm.controls.department.patchValue(this.data.patient.department.name); 
       this.regOprationMode = 'update'; 
     } 
 
@@ -87,7 +89,7 @@ export class RegisterationFormComponent implements OnInit {
     this._patient.update(this.regForm.value.id, this.regForm.value).subscribe(
       responce => {
         this.thisDialog.close({responce:true,opration:'update', data: responce});
-        this._message.httpSuccess('created account for <b> '+responce.first_name);
+        this._message.httpSuccess('Edited profile of <b> '+responce.first_name);
       }, 
       error => {
         this.loading = false;

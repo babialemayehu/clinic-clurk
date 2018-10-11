@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms'; 
 
 import { Patient } from '../model/Patient';
@@ -11,6 +11,12 @@ import { PatientService } from '../service/patient.service';
 export class PatientSearchComponent implements OnInit {
 
   @Output() patient = new EventEmitter(); 
+
+  @Input()
+  set search(key: string){
+    this.searchControl.patchValue(key); 
+    this.$search(); 
+  }
 
   private autocomplets: Patient[]; 
   private searchControl: FormControl;  
@@ -34,7 +40,7 @@ export class PatientSearchComponent implements OnInit {
     )
   }
 
-  search(patient: Patient = null) {
+  $search(patient: Patient = null) {
     if(patient){
       this.patient.emit(patient); 
     }else{

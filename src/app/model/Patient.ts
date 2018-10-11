@@ -1,3 +1,5 @@
+import { Department } from "./Department";
+
 export interface Patient{
     id: number, 
     reg_id: string, 
@@ -11,6 +13,8 @@ export interface Patient{
     dorm_room_number: number, 
     accadamic_year: number, 
     departement_id: number, 
+    departement: Department, 
     college_id: number, 
-    clurk_id: number
+    clurk_id: number, 
+    registerd_at: string
 }

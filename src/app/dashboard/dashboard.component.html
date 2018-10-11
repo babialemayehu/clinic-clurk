@@ -14,6 +14,17 @@
      </div>
      <div>
         <mat-card *ngIf="!noSearch">
+          <mat-icon class="right" mat-icon-button [matMenuTriggerFor]="appMenu">more_vert</mat-icon>
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item (click)="edit()">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span> 
+            </button> 
+            <button mat-menu-item (click)="delete()">
+                <mat-icon color="red">delete</mat-icon>
+                <span>Delete</span> 
+              </button> 
+          </mat-menu> 
           <app-patinet-view [patient]="patient"></app-patinet-view>
           <br>
           <button mat-button (click)="queue()" [disabled]='isQueued' class="right primary" style="color:white">Queue</button>
