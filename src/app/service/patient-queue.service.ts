@@ -29,8 +29,8 @@ export class PatientQueueService {
     return this._http.delete<Patient>(URL, {}); 
   }
 
-  recentVisit(patient_id: number): Observable<Patient_queue[]>{
-    const URL = this.root+"/ajax/get/queue/recent/"+patient_id; 
+  visits(patient_regId: string, limit: number = -1): Observable<Patient_queue[]>{
+    const URL = this.root+"/ajax/get/queue/visits/"+patient_regId+"/"+limit; 
     return this._http.get<Patient_queue[]>(URL); 
   }
 

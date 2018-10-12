@@ -5,6 +5,7 @@ import { UserProfileRouteComponent } from './user-profile-route/user-profile-rou
 import { SettingsComponent } from './settings/settings.component';
 import { ChangePasswordRouteComponent } from './change-password-route/change-password-route.component';
 import { QueueComponent } from './queue/queue.component'; 
+import { VisitsComponent } from './visits/visits.component';
 
 export const appRoutes: Routes = [
     {path: '', component: DashboardComponent },
@@ -12,5 +13,6 @@ export const appRoutes: Routes = [
     {path: 'settings', component: SettingsComponent }, 
     {path: 'settings/change password', component: ChangePasswordRouteComponent }, 
     //{path: ':worker_id', component: UserProfileRouteComponent}, 
-    {path: 'queue', component: QueueComponent }
+    {path: 'queue', component: QueueComponent },
+    {path: 'visits/:reg_id', component: VisitsComponent},
 ]; 

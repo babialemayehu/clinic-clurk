@@ -15,14 +15,14 @@ export class RecentVisitsComponent implements OnInit {
   @Input()
   set patient(value: Patient){
     if(value){
-      this._queue.recentVisit(value.id).subscribe(
-        (responce) => {
-           
+      this._queue.visits(value.reg_id, 5).subscribe(
+        (responce) => { 
           this.visits = responce; 
         }
       )
     }
   }
+
   constructor(private _queue: PatientQueueService) { }
 
   ngOnInit() {console.log(this.visits);
