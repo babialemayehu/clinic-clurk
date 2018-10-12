@@ -28,6 +28,10 @@ button:focus{ background: darken($color: #ddd, $amount: 0.1)}
 .small { font-size: .8em !important }
 .larg-text { font-size: 1.3em }
 
+// capitalaization
+.uppercase{ text-transform: uppercase }
+.capitalize{ text-transform: capitalize }
+
 .character-counter{display:none}
 .mat-card.form-container{
     padding: 0px; 

@@ -10,14 +10,14 @@
   <form id="registartionForm" class="container" (ngSubmit)="onSubmit()" [formGroup]='regForm' > 
     <div class="row">
       <mat-form-field class="col m4">
-        <input matInput formControlName="reg_id" placeholder="Registral id" class="browser-default"> 
+        <input matInput formControlName="reg_id" placeholder="Registral id" class="browser-default uppercase"> 
         <mat-error *ngIf="reg_id.invalid && reg_id.touched">
           This field is required
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="col m5">
-        <input matInput formControlName="department" placeholder="Department" class="browser-default"> 
+        <input matInput formControlName="department" placeholder="Department" class="browser-default capitalize" > 
         <mat-error *ngIf="department.invalid && department.touched">
           This field is required
         </mat-error>
@@ -31,19 +31,19 @@
       </mat-form-field>
 
       <mat-form-field  class="col m6">
-        <input matInput formControlName="first_name" placeholder="First Name">
+        <input matInput formControlName="first_name" placeholder="First Name" class='capitalize'>
        
       </mat-form-field>
 
       <mat-form-field class="col m6">
-        <input matInput formControlName='father_name' placeholder="Father Name">
+        <input matInput formControlName='father_name' placeholder="Father Name" class='capitalize'>
         <mat-error *ngIf="father_name.invalid && father_name.touched">
           This field is required
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="col m12">
-        <input matInput formControlName="grand_father_name" placeholder="Grand Father Name"> 
+        <input matInput formControlName="grand_father_name" placeholder="Grand Father Name" class='capitalize'> 
         <mat-error *ngIf="grand_father_name.invlaid && grand_father_name.touched">
           This field is required
         </mat-error>

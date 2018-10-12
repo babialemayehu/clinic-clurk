@@ -12,9 +12,9 @@
          <app-patient-search (patient)="onSearch($event)"></app-patient-search>
         </div>
      </div>
-     <div>
+     <div id="show-area">
         <mat-card *ngIf="!noSearch">
-          <mat-icon class="right" mat-icon-button [matMenuTriggerFor]="appMenu">more_vert</mat-icon>
+          <mat-icon class="right" mat-icon-button [matMenuTriggerFor]="appMenu"style="cursor: pointer;">more_vert</mat-icon>
           <mat-menu #appMenu="matMenu">
             <button mat-menu-item (click)="edit()">
               <mat-icon>edit</mat-icon>

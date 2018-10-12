@@ -66,6 +66,7 @@ import { CardTitleComponent } from './card-title/card-title.component';
 import { QueueMinComponent } from './queue-min/queue-min.component';
 import { QueueComponent } from './queue/queue.component';
 import { VisitsComponent } from './visits/visits.component';
+import { SetupDialogComponent } from './setup-dialog/setup-dialog.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { VisitsComponent } from './visits/visits.component';
     QueueMinComponent,
     QueueComponent,
     VisitsComponent,
+    SetupDialogComponent,
    
     // ContextMenu,
   ],

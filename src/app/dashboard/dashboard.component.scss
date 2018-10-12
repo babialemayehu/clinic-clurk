@@ -22,3 +22,9 @@
     background-color: #ddd; 
     cursor: not-allowed; 
 }
+@media screen and (min-width: 910px) {
+   #show-area{
+       width: 80%; 
+       margin: auto; 
+   }
+} 
