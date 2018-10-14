@@ -39,8 +39,8 @@ export class PatientService {
     return this._http.get<Patient>(URL); 
   }
 
-  departments(): Observable<Department>{
+  departments(): Observable<Department[]>{
     const URL = this.root+"/ajax/get/departments"; 
-    return this._http.get<Department>(URL); 
+    return this._http.get<Department[]>(URL); 
   }
 }

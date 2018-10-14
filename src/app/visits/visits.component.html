@@ -19,7 +19,7 @@
         <!-- Name Column -->
         <ng-container matColumnDef="physician">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Physician</th>
-          <td mat-cell *matCellDef="let row">{{row.physician.name}}</td>
+          <td mat-cell *matCellDef="let row">{{row.physician.first_name + " "+row.physician.father_name+" "+row.physician.grand_father_name}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

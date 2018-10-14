@@ -40,7 +40,7 @@ export class QueueDataSource extends DataSource<Patient_queue> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       const a_name=(a.patient.first_name+" "+a.patient.father_name+" "+a.patient.grand_father_name); 
-      const b_name = (b.patient.first_name+" "+b.patient.father_name+" "+b.patient.grand_father_name): 
+      const b_name = (b.patient.first_name+" "+b.patient.father_name+" "+b.patient.grand_father_name);
       switch (this.sort.active) {
         case 'reg_id': return compare(a.patient.reg_id, b.patient.reg_id, isAsc);
         case 'name': return compare(a_name, b_name, isAsc );

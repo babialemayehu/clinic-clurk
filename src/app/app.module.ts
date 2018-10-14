@@ -67,6 +67,8 @@ import { QueueMinComponent } from './queue-min/queue-min.component';
 import { QueueComponent } from './queue/queue.component';
 import { VisitsComponent } from './visits/visits.component';
 import { SetupDialogComponent } from './setup-dialog/setup-dialog.component';
+import { UploadComponent } from './upload_profile_pic/upload/upload.component';
+import { RouteComponent } from './upload_profile_pic/route/route.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,8 @@ import { SetupDialogComponent } from './setup-dialog/setup-dialog.component';
     QueueComponent,
     VisitsComponent,
     SetupDialogComponent,
+    UploadComponent,
+    RouteComponent,
    
     // ContextMenu,
   ],
@@ -131,6 +135,7 @@ import { SetupDialogComponent } from './setup-dialog/setup-dialog.component';
     // ContextMenu, 
     ContextMenuComponent,
     UserProfileModalComponent,
+    SetupDialogComponent
 
   ], 
   providers: [

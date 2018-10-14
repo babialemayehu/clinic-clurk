@@ -11,7 +11,7 @@ export class User {
     public phone: string,
     public role?: number,
     public profile_pic?: string,
-    public isFirstTime?: number,
+    public setup_step?: number,
     public created_at?: string,
     public updated_at?: string ){}
   

@@ -6,8 +6,7 @@ import { RegisterationFormComponent } from '../registeration-form/registeration-
 import { MatDialog, throwMatDuplicatedDrawerError } from '@angular/material'; 
 import { PatientService } from '../service/patient.service'; 
 import { AlertComponent } from '../alert/alert.component'; 
-import { Router } from '@angular/router'; 
-
+import { Router, ActivatedRoute} from '@angular/router'; 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -24,6 +23,7 @@ export class DashboardComponent implements OnInit {
     private _queue: PatientQueueService,
     private _patient: PatientService, 
     private _router: Router, 
+    private _activeRoute: ActivatedRoute,
     private _dialog: MatDialog) { }
 
   ngOnInit() {

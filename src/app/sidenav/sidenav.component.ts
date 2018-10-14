@@ -11,23 +11,14 @@ import { User } from '../model/User';
 export class SidenavComponent implements OnInit {
   
   @ViewChild('profileImageContainer') profileImageContainer; 
-  $auth: User; 
-  public profilePic: string; 
+  @Input() $auth: User; 
+  @Input() profilePic: string; 
 
   constructor(public _user: UserService) {
      
   }
 
   ngOnInit() {
-    this._user.authUser().subscribe(
-      result => {
-        this.$auth = result; 
-        this.profilePic = result.profile_pic;
-        // let img = document.createElement('img');
-        // img.classList.add('reponsive-img'); 
-        // img.src = result.profile_pic; 
-        // this.profileImageContainer.nativeElement.appendChild(img);
-      }
-    ); 
+   
   }
 }

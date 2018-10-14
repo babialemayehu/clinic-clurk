@@ -8,8 +8,11 @@ import { PatientService } from '../service/patient.service';
 import { CommonMessageService as Message }  from '../service/common-message.service'; 
 
 import { User } from '../model/User'; 
+import { Department } from '../model/Department'; 
 
 declare var M; 
+declare var S; 
+
 @Component({
   selector: 'app-registeration-form',
   templateUrl: './registeration-form.component.html',
@@ -22,6 +25,8 @@ export class RegisterationFormComponent implements OnInit {
   public regForm: FormGroup; 
   public roles: object; 
   public regOprationMode = 'new'; 
+  private departments: Department[] = []; 
+  private autoDepartments: Department[] = []; 
   @Input()
   set value(user: User) {
     this.regForm.setValue(user); 
@@ -51,17 +56,56 @@ export class RegisterationFormComponent implements OnInit {
       birth_date: ['', [Validators.required]],
       phone: ['', [Validators.required]],
     }); 
-    console.log(typeof this.data.patient ); 
     if(typeof this.data.patient !== 'undefined'){
-      console.log(this.data); 
       this.regForm.patchValue(this.data.patient);
       this.regForm.controls.department.patchValue(this.data.patient.department.name); 
       this.regOprationMode = 'update'; 
     } 
 
+    this._patient.departments().subscribe(
+      responce => {
+        this.departments = responce;
+        this.autoDepartments = responce;  
+      }
+    )
+
+    this.regForm.controls.department.valueChanges.subscribe(
+      (value) => {
+        this.filter(value); 
+      }
+    )
     // this.regForm.valueChanges.subscribe(
     //   (value) => { console.log(value); }
     // ); 
+  }
+
+  filter(input: string){
+    console.log(input); 
+    if(input == ""){
+      this.autoDepartments = this.departments; 
+      return; 
+    }
+    let start = this.departments.filter((val)=>{ 
+      return S(val.name.toLocaleLowerCase()).startsWith(input.toLocaleLowerCase()); 
+    }); 
+    const notStart = this.departments.filter((val)=>{ 
+      return !S(val.name.toLocaleLowerCase()).startsWith(input.toLocaleLowerCase()); 
+    }); 
+    let contain = notStart.filter((val) => {
+      return S(val.name.toLocaleLowerCase()).include(input.toLocaleLowerCase()); 
+    }) 
+    this.autoDepartments = start.concat(contain); 
+  }
+
+  validateDepartemet(){
+    const inputValue = this.regForm.controls.department.value;
+    const count = this.departments.filter((val)=>{
+        return val.name.toLowerCase() == inputValue.toLocaleLowerCase(); 
+    }).length; 
+    if(length < 1 && inputValue != ""){
+      this.regForm.controls.department.setErrors({'invalidDep': true}); 
+    } 
+    
   }
   onSubmit(){
     this.loading = true; 

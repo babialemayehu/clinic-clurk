@@ -2,8 +2,9 @@
   <div class="indeterminate"></div>
 </div>
 <div class="form-conatiner" [class.form-loading]="loading">
+  <mat-icon matDialogClose class="right">close</mat-icon> 
   <header class="container">
-      <h5>Create User </h5> 
+      <h5>New patient</h5> 
   </header>
   <div layout layout-fill ng-app="context-menu">
     
@@ -17,11 +18,24 @@
       </mat-form-field>
 
       <mat-form-field class="col m5">
-        <input matInput formControlName="department" placeholder="Department" class="browser-default capitalize" > 
-        <mat-error *ngIf="department.invalid && department.touched">
+        <input matInput formControlName="department"  
+        [matAutocomplete]="auto" 
+        (blur) = "validateDepartemet()"
+        placeholder="Department" 
+        class="browser-default capitalize" > 
+        <mat-error *ngIf="department.errors?.required && department.touched">
           This field is required
         </mat-error>
+        <mat-error *ngIf="department.errors?.invalidDep && department.touched">
+          There is no such a department
+        </mat-error>
       </mat-form-field>
+        <!-- DEPARTMENT AUTO COMPLET -->
+        <mat-autocomplete #auto="matAutocomplete" style="">
+          <mat-option *ngFor="let department of autoDepartments" [value]="department.name">
+            {{department.name}}
+          </mat-option>
+        </mat-autocomplete>
 
       <mat-form-field class="col m3">
         <input matInput formControlName="accadamic_year" placeholder="Batch" class="browser-default"> 
