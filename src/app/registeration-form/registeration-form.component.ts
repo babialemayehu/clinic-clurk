@@ -80,7 +80,6 @@ export class RegisterationFormComponent implements OnInit {
   }
 
   filter(input: string){
-    console.log(input); 
     if(input == ""){
       this.autoDepartments = this.departments; 
       return; 
@@ -102,7 +101,7 @@ export class RegisterationFormComponent implements OnInit {
     const count = this.departments.filter((val)=>{
         return val.name.toLowerCase() == inputValue.toLocaleLowerCase(); 
     }).length; 
-    if(length < 1 && inputValue != ""){
+    if(count < 1 && inputValue != ""){
       this.regForm.controls.department.setErrors({'invalidDep': true}); 
     } 
     

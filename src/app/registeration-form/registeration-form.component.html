@@ -2,16 +2,25 @@
   <div class="indeterminate"></div>
 </div>
 <div class="form-conatiner" [class.form-loading]="loading">
-  <mat-icon matDialogClose class="right">close</mat-icon> 
-  <header class="container">
-      <h5>New patient</h5> 
-  </header>
+  <div class="row">
+
+    <mat-icon 
+    matDialogClose 
+    class="right secondery" 
+    style="margin-right: 2.5em;cursor: pointer">close</mat-icon> 
+
+    
+    <header class="container">
+        <h5>New patient</h5> 
+    </header>
+  </div>
+  
   <div layout layout-fill ng-app="context-menu">
     
   <form id="registartionForm" class="container" (ngSubmit)="onSubmit()" [formGroup]='regForm' > 
     <div class="row">
       <mat-form-field class="col m4">
-        <input matInput formControlName="reg_id" placeholder="Registral id" class="browser-default uppercase"> 
+        <input matInput mat-autofocus formControlName="reg_id" placeholder="Registral id" class="browser-default uppercase"> 
         <mat-error *ngIf="reg_id.invalid && reg_id.touched">
           This field is required
         </mat-error>
