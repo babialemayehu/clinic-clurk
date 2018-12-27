@@ -37,7 +37,8 @@ export class DashboardComponent implements OnInit {
           this.isQueued =(responce > 0);
           this.load++; 
       }
-    )
+    ); 
+    console.log(patient); 
   }
 
   queue(){

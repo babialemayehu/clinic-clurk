@@ -47,6 +47,11 @@ export class PatientSearchComponent implements OnInit {
       this._patinet.search(this.searchControl.value).subscribe(
         (result) => {
           this.patient.emit(result);
+        }, 
+        (error) => {
+         // if(error.status == 407){
+            this.patient.emit(false); 
+          //}
         }
       )
     }

@@ -14,21 +14,32 @@
      </div>
      <div id="show-area">
         <mat-card *ngIf="!noSearch">
-          <mat-icon class="right" mat-icon-button [matMenuTriggerFor]="appMenu"style="cursor: pointer;">more_vert</mat-icon>
-          <mat-menu #appMenu="matMenu">
-            <button mat-menu-item (click)="edit()">
-              <mat-icon>edit</mat-icon>
-              <span>Edit</span> 
-            </button> 
-            <button mat-menu-item (click)="delete()">
-                <mat-icon color="red">delete</mat-icon>
-                <span>Delete</span> 
-              </button> 
-          </mat-menu> 
-          <app-patinet-view [patient]="patient"></app-patinet-view>
-          <br>
-          <button mat-button (click)="queue()" [disabled]='isQueued' class="right primary" style="color:white">Queue</button>
-          <button mat-button (click)="dequeue()" [disabled]='!isQueued' class="right danger-text">Dequeue</button>
+          <div *ngIf="patient != false">
+              <button mat-icon-button>
+                <mat-icon class="right" [matMenuTriggerFor]="appMenu"style="cursor: pointer;">more_vert</mat-icon>
+              </button>
+              
+              <mat-menu #appMenu="matMenu">
+                <button mat-menu-item (click)="edit()">
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit</span> 
+                </button> 
+                <button mat-menu-item (click)="delete()">
+                    <mat-icon color="red">delete</mat-icon>
+                    <span>Delete</span> 
+                  </button> 
+              </mat-menu> 
+              <app-patinet-view [patient]="patient"></app-patinet-view>
+              <br>
+              <button mat-button (click)="queue()" [disabled]='isQueued' class="right primary" style="color:white">Queue</button>
+              <button mat-button (click)="dequeue()" [disabled]='!isQueued' class="right danger-text">Dequeue</button>
+            </div>
+            <div  *ngIf="patient == false">
+              <div class="container" style="text-align: center">
+                  <h4>This patient is new. He/she have never been hear before</h4>
+              </div>
+            </div>
+          
         </mat-card>
      </div>
      

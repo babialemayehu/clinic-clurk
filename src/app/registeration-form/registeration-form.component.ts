@@ -106,6 +106,14 @@ export class RegisterationFormComponent implements OnInit {
     } 
     
   }
+
+  isIdExits(){
+    this._patient.search(this.regForm.controls.reg_id.value).subscribe(
+      (patient) => {
+        this.regForm.controls.reg_id.setErrors({'patientExist': true}); 
+      }
+    )
+  }
   onSubmit(){
     this.loading = true; 
     if(this.regOprationMode != 'update'){

@@ -20,9 +20,16 @@
   <form id="registartionForm" class="container" (ngSubmit)="onSubmit()" [formGroup]='regForm' > 
     <div class="row">
       <mat-form-field class="col m4">
-        <input matInput mat-autofocus formControlName="reg_id" placeholder="Registral id" class="browser-default uppercase"> 
-        <mat-error *ngIf="reg_id.invalid && reg_id.touched">
+        <input matInput mat-autofocus 
+        (blur) = "isIdExits()"
+        formControlName="reg_id" 
+        placeholder="Registral id" 
+        class="browser-default uppercase"> 
+        <mat-error *ngIf="reg_id.errors?.required && reg_id.touched">
           This field is required
+        </mat-error>
+        <mat-error *ngIf="reg_id.errors?.patientExist && reg_id.touched">
+          This patient is already registered. 
         </mat-error>
       </mat-form-field>
 
@@ -48,6 +55,10 @@
 
       <mat-form-field class="col m3">
         <input matInput formControlName="accadamic_year" placeholder="Batch" class="browser-default"> 
+        <!-- <mat-select formControlName="gender" placeholder="Gender">
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+        </mat-select> -->
         <mat-error *ngIf="accadamic_year.invalid && accadamic_year.touched">
           This field is required
         </mat-error>
