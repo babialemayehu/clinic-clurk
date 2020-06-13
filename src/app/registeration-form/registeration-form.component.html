@@ -6,6 +6,7 @@
 
     <mat-icon 
     matDialogClose 
+    (click)="thisDialog.close()"
     class="right secondery" 
     style="margin-right: 2.5em;cursor: pointer">close</mat-icon> 
 
@@ -24,12 +25,14 @@
         (blur) = "isIdExits()"
         formControlName="reg_id" 
         placeholder="Registral id" 
-        class="browser-default uppercase"> 
+        class="browser-default uppercase"
+        #reg_id_input> 
         <mat-error *ngIf="reg_id.errors?.required && reg_id.touched">
           This field is required
         </mat-error>
         <mat-error *ngIf="reg_id.errors?.patientExist && reg_id.touched">
-          This patient is already registered. 
+          This patient exist 
+          <a (click)="openExitstingUser(reg_id_input.value)">Open</a>
         </mat-error>
       </mat-form-field>
 
@@ -63,12 +66,12 @@
           This field is required
         </mat-error>
       </mat-form-field>
-
+      <br>
       <mat-form-field  class="col m6">
         <input matInput formControlName="first_name" placeholder="First Name" class='capitalize'>
        
       </mat-form-field>
-
+      <br>
       <mat-form-field class="col m6">
         <input matInput formControlName='father_name' placeholder="Father Name" class='capitalize'>
         <mat-error *ngIf="father_name.invalid && father_name.touched">

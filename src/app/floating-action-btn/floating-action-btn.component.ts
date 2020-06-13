@@ -32,7 +32,9 @@ export class FloatingActionBtnComponent implements OnInit {
       width: '600px', 
       data: {
         roles: this.roles,
+        
       }, 
+      disableClose: true
     });
     
     dialog.afterClosed().subscribe(

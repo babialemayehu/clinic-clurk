@@ -21,6 +21,7 @@ import { RegisterationFormComponent } from './registeration-form/registeration-f
 import { HttpClientModule} from "@angular/common/http";
 import { AlertComponent } from './alert/alert.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CookieService } from 'ngx-cookie-service'; 
 
 import { 
   MatButtonModule,
@@ -140,6 +141,7 @@ import { RouteComponent } from './upload_profile_pic/route/route.component';
   ], 
   providers: [
     UserService, 
+    CookieService
   ],
   bootstrap: [AppComponent]
 }) 

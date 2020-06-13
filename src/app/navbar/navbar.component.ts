@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RootURL } from '../model/RootURL'; 
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  private $root = RootURL; 
   public menuItems = [
-    {href: 'users', text: 'Users'}
+    // {href: 'users', text: 'Users'}
   ]; 
   constructor() { }
 

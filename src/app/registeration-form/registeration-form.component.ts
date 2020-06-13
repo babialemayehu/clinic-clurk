@@ -60,7 +60,9 @@ export class RegisterationFormComponent implements OnInit {
       this.regForm.patchValue(this.data.patient);
       this.regForm.controls.department.patchValue(this.data.patient.department.name); 
       this.regOprationMode = 'update'; 
-    } 
+    } else if(typeof this.data.regId !== 'undefined'){
+      this.regForm.controls.reg_id.patchValue(this.data.regId); 
+    }
 
     this._patient.departments().subscribe(
       responce => {
@@ -108,11 +110,14 @@ export class RegisterationFormComponent implements OnInit {
   }
 
   isIdExits(){
-    this._patient.search(this.regForm.controls.reg_id.value).subscribe(
-      (patient) => {
-        this.regForm.controls.reg_id.setErrors({'patientExist': true}); 
-      }
-    )
+    if(this.regOprationMode == 'new'){
+      this._patient.search(this.regForm.controls.reg_id.value).subscribe(
+        (patient) => {
+          this.regForm.controls.reg_id.setErrors({'patientExist': true}); 
+        }
+      )
+    }
+    
   }
   onSubmit(){
     this.loading = true; 
@@ -147,6 +152,11 @@ export class RegisterationFormComponent implements OnInit {
         this._message.httpError({responce:false, operation:'update',data: error}); 
       }
     )  
+  }
+
+  openExitstingUser(value: string){
+    this._route.navigate(['/search/'+value]); 
+    this.thisDialog.close(); 
   }
   get reg_id(){return this.regForm.get("reg_id"); }
   get department(){return this.regForm.get("department"); }

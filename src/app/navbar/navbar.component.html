@@ -1,7 +1,21 @@
 <nav class="primary" >
   <div class="container">
       <div class="nav-wrapper">
-          <a href="#" class="brand-logo">DMU Clinic</a>
+          <a routerlink="/" class="brand-logo">
+            <div class="container" style="width: 100%">
+              <div class="row">
+                <div class="col s2">
+                  <img [src]="$root+'/img/heart.svg'" 
+                              style="width: 50px; height: 50px; display: inline;padding-top: 6px"/>
+                </div>
+                <div class="col s10">
+                   <span style="margin-left: 8px">DMU Clinic</span>  
+                </div>
+              </div>
+            </div> 
+           
+            
+          </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li *ngFor="let item of menuItems"><a [href]="item.href">{{item.text}}</a></li>
           </ul>

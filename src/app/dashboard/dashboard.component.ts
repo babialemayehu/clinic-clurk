@@ -7,6 +7,8 @@ import { MatDialog, throwMatDuplicatedDrawerError } from '@angular/material';
 import { PatientService } from '../service/patient.service'; 
 import { AlertComponent } from '../alert/alert.component'; 
 import { Router, ActivatedRoute} from '@angular/router'; 
+import { RootURL } from '../model/RootURL';
+import { CookieService } from 'ngx-cookie-service'; 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,14 +21,38 @@ export class DashboardComponent implements OnInit {
   private $queue: Patient_queue; 
   private isQueued: boolean; 
   private load: number = 0; 
+  private $root: string = RootURL; 
+  private reg: string;
+
   constructor(
     private _queue: PatientQueueService,
     private _patient: PatientService, 
     private _router: Router, 
     private _activeRoute: ActivatedRoute,
-    private _dialog: MatDialog) { }
+    private _dialog: MatDialog,
+    private _cookie: CookieService) { }
 
   ngOnInit() {
+    this._activeRoute.params.subscribe(
+      (param) => {
+        if(param.reg_id){
+          this._patient.search(param.reg_id).subscribe(
+            (patient) => {
+              this.onSearch(patient); 
+              this.reg = patient.reg_id;
+            }, 
+            (error) => {
+              this.reg = param.reg_id; 
+              this.patient = null; 
+              this.noSearch = false; 
+              if(this._cookie.get('auto register') == "true")                 
+                  this.retgister();         
+            }
+          )
+        }
+        
+      }
+    )
   }
 
   onSearch(patient) {
@@ -38,7 +64,6 @@ export class DashboardComponent implements OnInit {
           this.load++; 
       }
     ); 
-    console.log(patient); 
   }
 
   queue(){
@@ -88,7 +113,6 @@ export class DashboardComponent implements OnInit {
     })
     alert.afterClosed().subscribe(
       (responce) => {
-        console.log(responce); 
         if(responce.responce){
           this._patient.delete(this.patient.id).subscribe(); 
           this.noSearch = true;
@@ -96,5 +120,17 @@ export class DashboardComponent implements OnInit {
       }
     )
     
+  }
+
+  retgister(){
+
+    this._dialog.open(RegisterationFormComponent, {
+      data:{
+        regId: this.reg,
+        
+      }, 
+      disableClose: true,
+      width: '600px'
+    }); 
   }
 }
